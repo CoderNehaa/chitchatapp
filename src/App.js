@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Login from './Components/Login';
+import Home from './Components/Home';
+import { UserHook } from './Components/Context/userContext';
 
 function App() {
+  const {user, authentication} = UserHook();
+  const routes = createBrowserRouter([
+    { path:'/', element:user?<Home />:<Login/> },
+    {path:'/login', element: <Login />},
+  ])
+  
+  useEffect(() => {
+    authentication();
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <RouterProvider router={routes} >
+      </RouterProvider>
     </div>
   );
 }
