@@ -1,7 +1,7 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 import db, { auth } from "../../firebase";
-import { collection, getDocs, addDoc, query, where, setDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, addDoc, query, where, setDoc, doc, onSnapshot, orderBy } from 'firebase/firestore';
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 
 const userContext = createContext();
@@ -76,7 +76,7 @@ function UserProvider({children}){
         
         const id = docRef.id;
 
-        await setDoc(doc(db, "messages", id), {
+        await setDoc(doc(db, "members", id), {
             id: id,
             name: name,
             email: email
@@ -132,6 +132,28 @@ function UserProvider({children}){
         getMessages();
     }
 
+    useEffect(() => {
+        const q = query(collection(db, 'messages'), orderBy('time')); 
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+          const msgData = [];
+          querySnapshot.forEach((doc) => {
+            msgData.push({
+              id: doc.id,
+              name: doc.data().name,
+              email: doc.data().email,
+              msg: doc.data().msg,
+              time: doc.data().time
+            });
+          });
+          setMessages(msgData);
+          
+        });
+    
+        return () => {
+          unsubscribe();
+        };
+      }, []);
+    
     return(
         <userContext.Provider value={{
             user, members, messages, signInWithGoogle, getMembers, logOut, authentication, getMessages, messages, addMessageToDb

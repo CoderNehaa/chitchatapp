@@ -13,7 +13,7 @@ const Login = () => {
   }, [user]);
   
   return (
-    <div className='bg-zinc-600 h-screen w-screen text-white flex flex-col items-center justify-center'>
+    <div className='bg-zinc-900 h-screen w-screen text-white flex flex-col items-center justify-center'>
       <h1 className='text-2xl tracking-wider m-2'> CHITCHAT </h1>
       <button
         className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
