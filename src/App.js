@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Login from './Components/Login';
 import Home from './Components/Home';
-import { UserHook } from './Components/Context/userContext';
+import { UserHook } from './Context/userContext';
 
 function App() {
   const {user, authentication} = UserHook();

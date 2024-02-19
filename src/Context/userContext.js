@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
-import db, { auth } from "../../firebase";
+import db, { auth } from "../firebase";
 import { collection, getDocs, addDoc, query, where, setDoc, doc, onSnapshot, orderBy } from 'firebase/firestore';
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 

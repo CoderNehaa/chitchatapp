@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import GroupMembers from './GroupMembers';
-import { UserHook } from './Context/userContext';
+import { UserHook } from '../Context/userContext';
 
 const Sidebar = ({showMobileDesc, setShowMobileDesc}) => {
   const { logOut, user, getMembers, members } = UserHook();
