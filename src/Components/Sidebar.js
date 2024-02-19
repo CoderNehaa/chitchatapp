@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import SideBarChat from './SideBarChat';
+import GroupMembers from './GroupMembers';
 import { UserHook } from './Context/userContext';
 
 const Sidebar = ({showMobileDesc, setShowMobileDesc}) => {
@@ -29,7 +29,7 @@ const Sidebar = ({showMobileDesc, setShowMobileDesc}) => {
 
       <div>
         {members && members.map((member) => 
-          <SideBarChat name={member.name} key={member.id} />
+          <GroupMembers name={member.name} key={member.id} />
         )}
       </div>      
     </div>

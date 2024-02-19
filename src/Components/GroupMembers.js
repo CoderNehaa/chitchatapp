@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Avatar } from '@mui/material';
 
-const SideBarChat = ({name}) => {
+const GroupMembers = ({name}) => {
     const arr = ["Baby", "Smokey", "Oreo", "Daisy", "Mimi", "Zoe", "Bubba", "Leo", "Bandit", "Rocky", "Simba", "Callie", "Mittens", "Abby", "Cali", "Pepper", "Boo", "Mia", "Patches", "Bella"];
     const [seed, setSeed] = useState(0);
 
@@ -19,4 +19,4 @@ const SideBarChat = ({name}) => {
     )
 }
 
-export default SideBarChat
+export default GroupMembers;
